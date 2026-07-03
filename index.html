@@ -152,6 +152,11 @@ const POSTS = [
     ar:"أرونا قطتك. نعرض قطط الخليج الحقيقية، دائمًا مع ذكر صاحبها."},
 ];
 
+// Download CTA appended to EVERY caption (founder directive: the download link
+// is on every post). aykizintelligence.com/hirra/get redirects to the App Store.
+const DL_EN = "\n\nGet Hirra, free: aykizintelligence.com/hirra/get";
+const DL_AR = "\n\nحمّلي هِرّة مجانًا: aykizintelligence.com/hirra/get";
+
 function copyBox(id){
   const el = document.getElementById(id);
   navigator.clipboard.writeText(el.value);
@@ -189,9 +194,9 @@ function renderInto(containerId, items, isCampaign){
       ${p.line?`<div class="line">&ldquo;${p.line}&rdquo;</div>`:""}
       ${mediaFor(p)}
       <div class="row"><span>EN caption</span><button id="en${p.no}-btn" onclick="copyBox('en${p.no}')">Copy</button></div>
-      <textarea id="en${p.no}" readonly>${p.en}</textarea>
+      <textarea id="en${p.no}" readonly>${p.en}${DL_EN}</textarea>
       <div class="row"><span>AR caption</span><button id="ar${p.no}-btn" onclick="copyBox('ar${p.no}')">Copy</button></div>
-      <textarea id="ar${p.no}" dir="rtl" readonly>${p.ar}</textarea>
+      <textarea id="ar${p.no}" dir="rtl" readonly>${p.ar}${DL_AR}</textarea>
       <div class="hashtags">${p.tags}</div>
     `;
     grid.appendChild(card);
